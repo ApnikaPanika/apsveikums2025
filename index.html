@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Priecīgus Ziemassvētkus</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(#0b3d0b, #1a6b1a);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+        }
+
+        .emoji {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            min-height: 2.5em;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 25px;
+            font-size: 1em;
+            background: #c62828;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            background: #e53935;
+            transform: scale(1.05);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            color: #333;
+            padding: 30px 35px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            animation: pop 0.3s ease;
+        }
+
+        .modal-content h2 {
+            color: #c62828;
+        }
+
+        .close {
+            margin-top: 20px;
+            background: #2e7d32;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Snow */
+        .snow {
+            position: fixed;
+            top: -10px;
+            color: white;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="emoji">🎄✨❄️</div>
+        <h1 id="typing"></h1>
+        <button onclick="openModal()">🎁 Open your present</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>🎅 Ho ho ho!</h2>
+            <p>
+                Priecīgus Ziemassvētkus un laimīgu Jauno gadu!<br>
+                Lai svētki ir pilni ar prieku, siltumu un smaidiem 🎄✨
+            </p>
+            <button class="close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        /* Typing effect */
+        const text = "šodien ir pēdējā stunda, priecīgus visiem svētkus!";
+        const element = document.getElementById("typing");
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                element.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeText, 80);
+            } else {
+                setTimeout(() => {
+                    element.textContent = "";
+                    index = 0;
+                    typeText();
+                }, 2000);
+            }
+        }
+
+        typeText();
+
+        /* Modal functions */
+        function openModal() {
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        /* Snowflakes */
+        for (let i = 0; i < 30; i++) {
+            let snow = document.createElement("div");
+            snow.className = "snow";
+            snow.innerHTML = "❄";
+            snow.style.left = Math.random() * 100 + "vw";
+            snow.style.animationDuration = 3 + Math.random() * 5 + "s";
+            snow.style.fontSize = 10 + Math.random() * 20 + "px";
+            document.body.appendChild(snow);
+        }
+    </script>
+
+</body>
+</html>
