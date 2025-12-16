@@ -101,6 +101,36 @@
                 transform: translateY(110vh);
             }
         }
+
+        .santa {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .modal-content h2 {
+            font-size: 2em;
+            color: #c62828;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .wish {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .wish span {
+            color: #2e7d32;
+        }
+
+        .subtext {
+            font-size: 1em;
+            opacity: 0.85;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -114,11 +144,19 @@
     <!-- Modal -->
     <div class="modal" id="modal">
         <div class="modal-content">
-            <h2>🎅 Ho ho ho!</h2>
-            <p>
-                Priecīgus Ziemassvētkus un laimīgu Jauno gadu!<br>
-                Lai svētki ir pilni ar prieku, siltumu un smaidiem 🎄✨
+            <div class="santa">🎅</div>
+            <h2>Ho ho ho!</h2>
+
+            <p class="wish">
+                Priecīgus <span>Ziemassvētkus</span><br>
+                un laimīgu <span>Jauno gadu</span>!
             </p>
+
+            <p class="subtext">
+                Lai svētki ir pilni ar<br>
+                prieku, siltumu un smaidiem ✨🎄
+            </p>
+
             <button class="close" onclick="closeModal()">Close</button>
         </div>
     </div>
